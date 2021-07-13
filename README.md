@@ -10,6 +10,11 @@ Download the latest version of [arduino-status.ino](https://github.com/micahmo/t
 
 **Note: The code assumes that the the LED is plugged into terminal 13 and GRD. You can adjust the Arduino code if your LED is plugged in differently by changing the LED constant at the beginning.**
 
+# TeamsStatusLed
+
+Download the [latest portable release](https://github.com/micahmo/teams-status-led/releases/tag/latest). Extract the .zip. Run `TeamsStatusLed.exe`. An icon will appear in the system tray. From there you can see the current status and modify the settings from the context menu.
+
+![image](https://user-images.githubusercontent.com/7417301/125371694-4e450600-e34f-11eb-8ac9-4009de6b877f.png)
 
 # Known Issues
 
