@@ -140,6 +140,9 @@ namespace TeamsStatusLed
 
                             if (newStatus == "NewActivity") continue;
 
+                            // If we go to InAMeeting when we're already in a "red" state, ignore it.
+                            if (newStatus == "InAMeeting" && _currentStatus.Color == Color.Red) continue;
+
                             if (!string.IsNullOrEmpty(newStatus))
                             {
                                 ApplyStatus(Status.GetStatus(newStatus));
@@ -164,6 +167,7 @@ namespace TeamsStatusLed
 
         private static void ApplyStatus(Status status)
         {
+            _currentStatus = status;
             CurrentStatus.Text = $"Teams Status: {status.FriendlyName}";
             _notifyIcon.Icon = status.Icon;
             _notifyIcon.Text = $"Teams Status: {status.FriendlyName}";
@@ -188,6 +192,8 @@ namespace TeamsStatusLed
         private static NotifyIcon _notifyIcon;
 
         private static readonly List<IUpdater> Updaters = new List<IUpdater> {new ArduinoUpdater(ArduinoStatus)};
+
+        private static Status _currentStatus;
 
         #endregion
     }
