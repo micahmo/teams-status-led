@@ -117,6 +117,9 @@ namespace TeamsStatusLed
                                 // NewActivity is not really a status change
                                 if (newStatus == "NewActivity") continue;
 
+                                // If we go to InAMeeting when we're already in a "red" state, ignore it.
+                                if (newStatus == "InAMeeting" && _currentStatus.Color == Color.Red) continue;
+
                                 ApplyStatus(Status.GetStatus(newStatus));
                             }
                         }
