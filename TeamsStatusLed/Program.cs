@@ -115,7 +115,7 @@ namespace TeamsStatusLed
                             if (line.Trim().Split().LastOrDefault() is { } newStatus)
                             {
                                 // NewActivity is not really a status change
-                                if (newStatus == "NewActivity") continue;
+                                if (newStatus == "NewActivity" || newStatus == "AAD") continue;
 
                                 // If we go to InAMeeting when we're already in a "red" state, ignore it.
                                 if (newStatus == "InAMeeting" && _currentStatus.Color == Color.Red) continue;
@@ -141,7 +141,7 @@ namespace TeamsStatusLed
                                 }
                             }
 
-                            if (newStatus == "NewActivity") continue;
+                            if (newStatus == "NewActivity" || newStatus == "AAD") continue;
 
                             // If we go to InAMeeting when we're already in a "red" state, ignore it.
                             if (newStatus == "InAMeeting" && _currentStatus.Color == Color.Red) continue;
