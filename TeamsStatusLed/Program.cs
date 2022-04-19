@@ -16,9 +16,9 @@ namespace TeamsStatusLed
 
         static void Main()
         {
-            Task.Run(StartMainLoop);
-
             InitSystemTray();
+
+            Task.Run(StartMainLoop);
 
             // This is needed to fully support the Notify Icon / WinForms functionality.
             Application.Run();
@@ -94,6 +94,9 @@ namespace TeamsStatusLed
 
         private static void StartMainLoop()
         {
+            // Set initial status to unknown
+            ApplyStatus(Status.GetStatus(string.Empty));
+
             long lastLength = 0;
 
             while (true)
